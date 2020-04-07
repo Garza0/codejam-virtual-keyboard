@@ -3,14 +3,12 @@ body {
 }
 
 .mainSection {
-  /* position: relative; */
   width: 880px;
   height: 600px;
   margin: auto;
 }
 
 textarea {
-  /* position: absolute; */
   width: 874px;
   height: 150px;
   border-radius: 5px;
@@ -19,16 +17,18 @@ textarea {
 }
 
 .keyboardSection {
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   width: 860px;
   height: 300px;
   border-radius: 5px;
-  /* border: solid 2px rgb(36, 36, 36); */
   padding: 10px;
   background-color: #004134;
 
+}
+
+.legend {
+  text-align: center;
 }
 
 .keyboard__line {
@@ -41,15 +41,16 @@ textarea {
 .keyboard__key {
   width: 50px;
   height: 50px;
-  /* border: solid 2px rgb(36, 36, 36); */
   background-color: #33675D;
   color: white;
   border-radius: 3px;
   margin: 4px;
   cursor: pointer;
   display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 4px #00271f;
 }
 
 .keyboard__key:hover {
@@ -58,7 +59,10 @@ textarea {
 
 .keyboard__key--active {
   background-color: #012e25;
-  
+  box-shadow: 0px 0px #00271f;
+  margin: 8px 6px 4px 2px; 
+  transition-property: background-color, margin;
+  transition-duration: .05s, .05s;
 }
 
 .keyboard__key[keycode="space"] {
@@ -90,4 +94,14 @@ textarea {
 
 .keyboard__key[keycode="backspace"], .keyboard__key[keycode="tab"], .keyboard__key[keycode="capslock"] {
   width: 95px;
+}
+
+.keyboard__key[keycode="keyf"]::after, .keyboard__key[keycode="keyj"]::after {
+  content: '';
+  width: 15px;
+  height: 2px;
+  position: absolute;
+  background-color: #025a48;
+  bottom: 7px;
+  box-shadow: -1px 1px #013a2e;
 }
