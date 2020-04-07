@@ -58,6 +58,7 @@ textarea {
 
 .keyboard__key--active {
   background-color: #012e25;
+  
 }
 
 .keyboard__key[keycode="space"] {
