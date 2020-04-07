@@ -152,8 +152,10 @@ function onMouseDownOrOnKeyDownSwitchCase(keycodeAttributeValue, buttonInnerText
   switch (keycodeAttributeValue) {
     case 'shiftleft':
     case 'shiftright':
-    case 'capslock':
       shiftState = true;
+      capsLkAndShiftHandler();
+      break;
+    case 'capslock':
       capsLkAndShiftHandler();
       break;
     case 'space':
