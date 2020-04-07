@@ -201,7 +201,9 @@ function onMouseDownOrOnKeyDownSwitchCase(keycodeAttributeValue, buttonInnerText
 function addMouseEvents() {
   keyboardKeys.forEach((element) => {
     element.onmousedown = function onMouseUp(e) {
-      if (e.toElement.attributes.keycode.value !== 'capslock') {
+      if (e.toElement.attributes.keycode.value === 'capslock') {
+        this.classList.toggle('keyboard__key--active');
+      } else {
         this.classList.add('keyboard__key--active');
       }
 
@@ -211,12 +213,10 @@ function addMouseEvents() {
 
   keyboardKeys.forEach((element) => {
     element.onmouseup = function onMouseUp(e) {
-      if (e.toElement.attributes.keycode.value === 'capslock') {
-        this.classList.toggle('keyboard__key--active');
-      } else {
+
+      if (e.toElement.attributes.keycode.value !== 'capslock') {
         this.classList.remove('keyboard__key--active');
       }
-
       switch (e.toElement.attributes.keycode.value) {
         case 'shiftleft':
         case 'shiftright':
@@ -235,16 +235,20 @@ function addMouseEvents() {
 function addKeyboardEvents() {
   document.onkeydown = function onKeyDownKeyboard(event) {
     const eventKey = document.querySelector(`[keycode="${event.code.toLowerCase()}"]`);
-    if (event.code.toLowerCase() !== 'capslock') {
+
+    if (event.code.toLowerCase() === 'capslock') {
+      eventKey.classList.toggle('keyboard__key--active');
+    } else {
       eventKey.classList.add('keyboard__key--active');
     }
-
     onMouseDownOrOnKeyDownSwitchCase(event.code.toLowerCase(), eventKey.innerText);
   };
 
   document.onkeyup = function onKeyUpKeyboard(event) {
     const eventKey = document.querySelector(`[keycode="${event.code.toLowerCase()}"]`);
-    eventKey.classList.remove('keyboard__key--active');
+    if (event.code.toLowerCase() !== 'capslock') {
+      eventKey.classList.remove('keyboard__key--active');
+    }
 
     switch (event.code.toLowerCase()) {
       case 'shiftleft':

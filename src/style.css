@@ -51,6 +51,8 @@ textarea {
   align-items: center;
   justify-content: center;
   box-shadow: -2px 4px #00271f;
+  transition-property: background-color, margin;
+  transition-duration: .05s, .05s;
 }
 
 .keyboard__key:hover {
@@ -61,8 +63,6 @@ textarea {
   background-color: #012e25;
   box-shadow: 0px 0px #00271f;
   margin: 8px 6px 4px 2px; 
-  transition-property: background-color, margin;
-  transition-duration: .05s, .05s;
 }
 
 .keyboard__key[keycode="space"] {
