@@ -92,8 +92,16 @@ textarea {
   width: 70px;
 }
 
-.keyboard__key[keycode="backspace"], .keyboard__key[keycode="tab"], .keyboard__key[keycode="capslock"] {
+.keyboard__key[keycode="backspace"], .keyboard__key[keycode="capslock"] {
   width: 95px;
+}
+
+.keyboard__key[keycode="tab"] {
+  width: 50px;
+}
+
+.keyboard__key[keycode="delete"] {
+  width: 37px;
 }
 
 .keyboard__key[keycode="keyf"]::after, .keyboard__key[keycode="keyj"]::after {

@@ -1,6 +1,6 @@
 const keyMap = [
   ['backquote', 'digit1', 'digit2', 'digit3', 'digit4', 'digit5', 'digit6', 'digit7', 'digit8', 'digit9', 'digit0', 'minus', 'equal', 'backspace'],
-  ['tab', 'keyq', 'keyw', 'keye', 'keyr', 'keyt', 'keyy', 'keyu', 'keyi', 'keyo', 'keyp', 'bracketleft', 'bracketright', 'backslash'],
+  ['tab', 'keyq', 'keyw', 'keye', 'keyr', 'keyt', 'keyy', 'keyu', 'keyi', 'keyo', 'keyp', 'bracketleft', 'bracketright', 'backslash', 'delete'],
   ['capslock', 'keya', 'keys', 'keyd', 'keyf', 'keyg', 'keyh', 'keyj', 'keyk', 'keyl', 'semicolon', 'quote', 'enter'],
   ['shiftleft', 'keyz', 'keyx', 'keyc', 'keyv', 'keyb', 'keyn', 'keym', 'comma', 'period', 'slash', 'shiftright', 'arrowup'],
   ['controlleft', 'metaleft', 'altleft', 'space', 'altright', 'contextmenu', 'controlright', 'arrowleft', 'arrowdown', 'arrowright'],
@@ -11,6 +11,7 @@ const keys = {
   tab: { value: 'Tab' },
   enter: { value: 'Enter' },
   capslock: { value: 'CapsLk' },
+  delete: { value: 'Del' },
   shiftleft: { value: 'Shift' },
   shiftright: { value: 'Shift' },
   controlleft: { value: 'Ctrl' },

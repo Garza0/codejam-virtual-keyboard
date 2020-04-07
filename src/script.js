@@ -64,7 +64,7 @@ function keyboardRenderWithoutCharacters() {
 
 function keyboardCharactersRender(lang, shiftValue) {
   document.querySelectorAll('.keyboard__key').forEach((element) => {
-    const keyCodeAttribute = element.attributes[1].value;
+    const keyCodeAttribute = element.attributes.keycode.value;
     element.innerText = returnValueFromObj(keyCodeAttribute, lang, shiftValue);
   });
 }
@@ -108,6 +108,19 @@ function backspaceHandler() {
   }
   textarea.value = textArr.join('');
   textarea.selectionEnd = startSelection - 1;
+}
+
+function deleteHandler() {
+  const startSelection = textarea.selectionStart;
+  const endSelection = textarea.selectionEnd;
+  const textArr = textarea.value.split('');
+  if (endSelection - startSelection > 0) {
+    textArr.splice(startSelection, endSelection - startSelection);
+  } else {
+    textArr.splice(endSelection, 1);
+  }
+  textarea.value = textArr.join('');
+  textarea.selectionEnd = startSelection;
 }
 
 function moveTextCursor(buttonKeyCode) {
@@ -183,6 +196,9 @@ function onMouseDownOrOnKeyDownSwitchCase(keycodeAttributeValue, buttonInnerText
     case 'backspace':
       backspaceHandler();
       break;
+    case 'delete':
+      deleteHandler();
+      break;
     case 'arrowleft':
       moveTextCursor('arrowleft');
       break;
@@ -215,7 +231,6 @@ function addMouseEvents() {
 
   keyboardKeys.forEach((element) => {
     element.onmouseup = function onMouseUp(e) {
-
       if (e.toElement.attributes.keycode.value !== 'capslock') {
         this.classList.remove('keyboard__key--active');
       }
