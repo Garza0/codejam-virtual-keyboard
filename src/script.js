@@ -4,7 +4,7 @@ import { keyMap, keys } from './keys.js';
 
 window.onkeydown = (e) => e.preventDefault();
 
-let language = 'en';
+let language;
 const valueOrShiftValue = 'value';
 let keyboardKeys;
 let capsLkState = false;
@@ -31,8 +31,6 @@ const saveLangState = () => {
 const restoreLangState = () => {
   language = sessionStorage.getItem('keyboard-language') ? sessionStorage.getItem('keyboard-language') : 'en';
 };
-
-restoreLangState();
 
 function returnValueFromObj(keyId, lang, valueCase) {
   if (Object.prototype.hasOwnProperty.call(keys[keyId], valueCase)) {
@@ -76,8 +74,6 @@ function changeLangHandler() {
   keyboardCharactersRender(language, valueOrShiftValue);
 }
 
-keyboardRenderWithoutCharacters();
-keyboardCharactersRender(language, valueOrShiftValue);
 
 function addCharacter(char) {
   const startSelection = textarea.selectionStart;
@@ -281,5 +277,10 @@ function addKeyboardEvents() {
   };
 }
 
-addKeyboardEvents();
-addMouseEvents();
+window.onload = () => {
+  restoreLangState();
+  keyboardRenderWithoutCharacters();
+  keyboardCharactersRender(language, valueOrShiftValue);
+  addKeyboardEvents();
+  addMouseEvents();
+};
